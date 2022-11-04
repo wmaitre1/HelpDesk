@@ -1,0 +1,121 @@
+﻿@using System.Security.Claims;
+@{
+    var user = User.FindFirst(ClaimTypes.Name);
+}
+   
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+       Dashboard
+    </h1>
+    <ol class="breadcrumb float-sm-right">
+        <li><a href="#"><i class="fa fa-dashboard"></i>Home</a></li>
+        &nbsp; &nbsp; 
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
+
+&nbsp; &nbsp;
+
+<section class="content">
+
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+    {
+
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box">
+                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Number Of Support Techs</span>
+                        <span class="info-box-number">
+
+                        </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Tickets To Be Assigned</span>
+                        <span class="info-box-number"></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <!-- fix for small devices only -->
+            <div class="clearfix hidden-md-up"></div>
+
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Tickets Assigned</span>
+                        <span class="info-box-number"></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box mb-3">
+                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Users</span>
+                        <span class="info-box-number"></span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+            <!-- /.col -->
+        </div>
+
+
+    }
+
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Employee"))
+    {
+
+        <div class="row">
+            <div class="col-12 col-sm-6 col-md-3">
+                <div class="info-box">
+                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+
+                    <div class="info-box-content">
+                        <span class="info-box-text">Ticket Sent</span>
+                        <span class="info-box-number">
+                            @ViewBag.tickets.Count
+                        </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+            </div>
+
+        </div>
+
+
+    }
+
+
+
+
+</section>

@@ -1,0 +1,95 @@
+﻿ @{
+    ViewData["Title"] = "Send Ticket";
+    Layout = "~/Views/Shared/_Layout1.cshtml";
+}
+
+@model HelpDesk.Models.ViewModels.TicketViewModel
+
+<!-- Main content -->
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+
+                @if(TempData["msg"] != null)
+                  {
+                    if(TempData["msg"].ToString() == "Done")
+                   {
+                    <div class="callout callout-success">
+                         <h4>Successful</h4>
+                         </div>
+                   }
+                   else
+                   {
+                     <div class="callout callout-danger">
+                         <h4>Failed</h4>
+                      </div>
+                   }
+
+               }
+
+                <!-- general form elements -->
+
+<section class="content-header">
+                    <h1>
+
+                    </h1>
+                    <ol class="breadcrumb float-sm-right">
+                        <li><a asp-controller="dashboard" asp-action="index"><i class="fa fa-dashboard"></i>Home</a></li>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <li><a href="#">Send Ticket </a></li>
+                    </ol>
+
+                </section>
+                &nbsp;
+                <div class="card card-primary">
+                    <div class="card-header">
+                        <h3 class="card-title">SEND TICKET</h3>
+                    </div>
+
+                    <!-- /.card-header -->
+                    
+
+                    <!-- form start -->
+                    <form asp-controller="ticket" asp-action="send" method="post">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="UserName">Title</label>
+                                <input type="text" class="form-control" id="UserName" required="required" asp-for="ticket.Title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Password">Description</label>
+                                <textarea class="form-control" asp-for="ticket.Description" required="required"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Status</label>
+                                <select class="form-control" asp-for="ticket.StatusId" asp-items="@Model.Statuses">
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Category</label>
+                                <select class="form-control" asp-for="ticket.CategoryId" asp-items="@Model.Categories">
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Period</label>
+                                <select class="form-control" asp-for="ticket.PeriodId" asp-items="@Model.Periods">
+                                </select>
+                            </div>
+
+
+
+
+                        <!-- /.card-body -->
+
+                        <div class="card-footer">
+                            <button type="submit" class="btn btn-primary">Send</button>
+                           </div>
+                    </form>
+                </div>
+

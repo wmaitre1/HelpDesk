@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>@ViewData["Title"] - HelpDesk</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <!-- CSS STYLE -->
+    <link href="~/css/home.css" rel="stylesheet" />
+
+
+ 
+</head>
+<body>
+    <header>
+       
+
+        <div id="menu-bar" class="fas fa-bars"></div>
+
+        <nav class="navbar">
+            <a href="home">home</a>
+            <a href="#features">features</a>
+            <a href="#about">about</a>
+            <a href="#usage">usage</a>
+            <a href="#review">review</a>
+            <a href="#pricing">pricing</a>
+            <a href="#contact">contact</a>
+            <a href="LogIn">Log In</a>
+        </nav>
+
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+           
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
